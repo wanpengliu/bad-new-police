@@ -1,5 +1,6 @@
 package com.news;
 
+import com.news.domain.Feed;
 import com.news.queue.MessagePublisher;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.boot.SpringApplication;
@@ -36,7 +37,11 @@ public class Application {
                         Status status : result.getTweets()) {
 
                     System.out.println("@" + status.getUser().getScreenName() + ":" + status.getText() );
-                    messagePublisher.sendMessage(status.getText());
+
+                    Feed feed = new Feed();
+                    feed.setPublisher(status.getUser().getName());
+                    feed.setMessageBody(status.getText());
+                    messagePublisher.sendMessage(feed);
 
                 }
             } catch (Exception e) {
