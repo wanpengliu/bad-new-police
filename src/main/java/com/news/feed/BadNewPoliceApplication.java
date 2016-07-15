@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BadNewPoliceApplication {
 
 	public static void main(String[] args) {
+		System.out.println("Hello Harish & Zhao");
 		SpringApplication.run(BadNewPoliceApplication.class, args);
 	}
 }
